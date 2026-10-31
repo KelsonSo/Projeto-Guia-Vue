@@ -64,12 +64,7 @@
       </v-col>
 
       <!-- Coluna Lateral Informativa -->
-      <v-col cols="12" md="3" class="text-center">
-        <v-card class="pa-8 rounded-xl" color="primary" variant="tonal">
-          <v-icon size="64" icon="mdi-heart-outline" class="mb-2"></v-icon>
-          <h3 class="text-h6 font-weight-bold">Inclusão na Prática</h3>
-        </v-card>
-      </v-col>
+      
     </v-row>
   </v-container>
 </template>

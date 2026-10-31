@@ -1,75 +1,77 @@
 <template>
   <v-container class="py-12">
     <v-row align="center">
-      <!-- Coluna Principal com o Carrossel do Projeto -->
-      <v-col cols="12" md="9">
-        <h2 class="text-h4 font-weight-bold mb-4">Sobre o Projeto</h2>
-
-        <v-card class="rounded-xl overflow-hidden" elevation="3">
-          <v-carousel
-            v-model="currentSlide"
-            height="450"
-            show-arrows="hover"
-            cycle
-            interval="5000"
-            hide-delimiter-background
+      <!-- Coluna Principal com Alternância de Conteúdo -->
+      <v-col cols="12">
+        <div class="d-flex align-center justify-space-between mb-4">
+          <h2 class="text-h4 font-weight-bold">Pesquisa e Resultados</h2>
+          
+          <!-- Botões de Navegação Superior (Alternador de Conteúdo) -->
+          <v-btn-toggle
+            v-model="activeTab"
             color="primary"
+            mandatory
+            rounded="xl"
+            elevation="1"
           >
-            <v-carousel-item
-              v-for="(img, index) in images"
-              :key="index"
-              :src="img.src"
-              cover
-            >
-              <!-- Overlay com título e descrição da imagem -->
-              <div class="d-flex align-end fill-height pa-4 text-white">
-                <div>
-                  <div class="text-h6 font-weight-bold">{{ img.title }}</div>
-                  <div class="text-subtitle-2">{{ img.description }}</div>
-                </div>
-              </div>
-            </v-carousel-item>
-          </v-carousel>
+            <v-btn value="pesquisa" prepend-icon="mdi-file-document-outline">
+              Pesquisa
+            </v-btn>
+            <v-btn value="resultado" prepend-icon="mdi-chart-bar">
+              Resultado da Pesquisa
+            </v-btn>
+          </v-btn-toggle>
+        </div>
 
-          <!-- Barra de navegação inferior -->
-          <v-card-actions class="pa-4 bg-surface d-flex justify-space-between align-center">
-            <span class="text-caption text-medium-emphasis">
-              Imagem {{ currentSlide + 1 }} de {{ images.length }}
-            </span>
-
-            <div>
-              <v-btn
-                variant="tonal"
-                color="prime"
-                size="small"
-                prepend-icon="mdi-chevron-left"
-                class="mr-2"
-                @click="currentSlide = (currentSlide - 1 + images.length) % images.length"
+        <!-- Janela de Transição Dinâmica -->
+        <v-window v-model="activeTab">
+          
+          <!-- ABA 1: Carrossel da Pesquisa (Imagens 1 a 11) -->
+          <v-window-item value="pesquisa">
+            <v-card class="rounded-xl overflow-hidden" elevation="3">
+              <v-carousel
+                v-model="currentSlide"
+                height="540"
+                show-arrows="hover"
+                cycle
+                interval="5000"
+                hide-delimiter-background
+                color="primary"
               >
-                Anterior
-              </v-btn>
+                <v-carousel-item
+                  v-for="(img, index) in images"
+                  :key="index"
+                  :src="img.src"
+                  contain
+                >
+                  <div class="d-flex align-end fill-height pa-4 text-white">
+                    <div>
+                      <div class="text-h6 text-prime font-weight-bold">{{ img.title }}</div>
+                    </div>
+                  </div>
+                </v-carousel-item>
+              </v-carousel>
+            </v-card>
+          </v-window-item>
+
+          <!-- ABA 2: Imagem do Resultado da Pesquisa -->
+          <v-window-item value="resultado">
+            <v-card class="rounded-xl overflow-hidden" elevation="3">
+              <v-img
+                :src="resultadoImg"
+                height="540"
+                contain
+                class="align-end text-white"
+              >
               
-              <v-btn
-                variant="flat"
-                color="prime"
-                size="small"
-                append-icon="mdi-chevron-right"
-                @click="currentSlide = (currentSlide + 1) % images.length"
-              >
-                Próxima
-              </v-btn>
-            </div>
-          </v-card-actions>
-        </v-card>
+              </v-img>
+            </v-card>
+          </v-window-item>
+
+        </v-window>
       </v-col>
 
       <!-- Coluna Lateral Informativa -->
-      <v-col cols="12" md="3" class="text-center">
-        <v-card class="pa-8 rounded-xl" color="primary" variant="tonal">
-          <v-icon size="64" icon="mdi-heart-outline" class="mb-2"></v-icon>
-          <h3 class="text-h6 font-weight-bold">Inclusão na Prática</h3>
-        </v-card>
-      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -77,57 +79,72 @@
 <script setup>
 import { ref } from 'vue'
 
+// Estado para controlar a aba ativa ('pesquisa' ou 'resultado')
+const activeTab = ref('pesquisa')
 const currentSlide = ref(0)
 
-// Função auxiliar para carregar imagens da pasta assets dinamicamente no Vite
+// Função auxiliar para carregar imagens dinamicamente no Vite
 function getImageUrl(name) {
-  return new URL(`../assets/slides/${name}`, import.meta.url).href
+  return new URL(`../assets/pesquisa-pasta/${name}`, import.meta.url).href
 }
+
+// Imagem única do resultado da pesquisa (Altere o nome do ficheiro para a sua imagem real)
+const resultadoImg = getImageUrl('pesquisa-resultado.jpg')
 
 const images = ref([
   { 
-    src: getImageUrl('1.jpg'), 
+    src: getImageUrl('pesquisa-1.jpg'), 
     title: 'Página 1', 
     description: 'Capa' 
   },
   { 
-    src: getImageUrl('2.jpg'), 
+    src: getImageUrl('pesquisa-2.jpg'), 
     title: 'Página 2', 
     description: 'Problema Mobilizador' 
   },
   { 
-    src: getImageUrl('3.jpg'), 
+    src: getImageUrl('pesquisa-3.jpg'), 
     title: 'Página 3', 
     description: 'Fundamentação Teórica' 
   },
   { 
-    src: getImageUrl('4.jpg'), 
+    src: getImageUrl('pesquisa-4.jpg'), 
     title: 'Página 4', 
     description: 'Justificativa' 
   },
   { 
-    src: getImageUrl('5.jpg'), 
+    src: getImageUrl('pesquisa-5.jpg'), 
     title: 'Página 5', 
     description: 'Objetivos' 
   },
   { 
-    src: getImageUrl('6.jpg'), 
+    src: getImageUrl('pesquisa-6.jpg'), 
     title: 'Página 6', 
     description: 'Apoio à Família' 
   },
   { 
-    src: getImageUrl('7.jpg'), 
+    src: getImageUrl('pesquisa-7.jpg'), 
     title: 'Página 7', 
     description: 'Resultados' 
   },
   { 
-    src: getImageUrl('8.jpg'), 
+    src: getImageUrl('pesquisa-8.jpg'), 
     title: 'Página 8', 
     description: 'Produto Final' 
   },
   { 
-    src: getImageUrl('9.jpg'), 
+    src: getImageUrl('pesquisa-9.jpg'), 
     title: 'Página 9', 
+    description: 'Referência' 
+  },
+  { 
+    src: getImageUrl('pesquisa-10.jpg'), 
+    title: 'Página 10', 
+    description: 'Referência' 
+  },
+  { 
+    src: getImageUrl('pesquisa-11.jpg'), 
+    title: 'Página 11', 
     description: 'Referência' 
   }
 ])
