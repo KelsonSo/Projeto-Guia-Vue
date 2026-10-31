@@ -11,28 +11,17 @@
       
       
         <h1 class="text-h3 text-md-h2 font-weight-bold mb-4 primary--text" style="line-height: 1.2;">
-          Guia de um novo olhar: <span class="text-medium-emphasis font-weight-regular text-h4 d-block mt-2">antes de julgar tente compreender</span>
+          Guia de um novo olhar: 
         </h1>
-        
+        <span class="text-medium-emphasis font-weight-regular text-h4 d-block mt-2">antes de julgar tente compreender</span>
         <p class="text-subtitle-1 text-medium-emphasis mb-6">
           Um portal educativo e inclusivo dedicado à consciencialização sobre o Transtorno do Espectro Autista.
         </p>
+        
       </v-col>
+     
       
-      <v-col cols="12" md="5" class="text-center mt-6 mt-md-0">
-       
-
-    
-          
-        
-          <!-- Se colocar a imagem na pasta assets do projeto, pode importá-la, ou usar um ícone representativo por enquanto -->
-          <v-icon color="primary" size="90" class="mb-4">mdi-ribbon</v-icon>
-          <h3 class="text-h6 font-weight-bold text-primary">Consciencialização e Empatia</h3>
-          <p class="text-body-2 text-medium-emphasis mt-2">
-            A inclusão começa quando escolhemos compreender.
-          </p>
-        
-      </v-col>
+     
     </v-row>
   </v-card>
   </v-container>

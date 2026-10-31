@@ -1,5 +1,5 @@
 <template>
-<v-app-bar color="primary" elevation="2" class="px-md-4">
+<v-app-bar color="prime" elevation="2" class="px-md-4">
   <v-app-bar-title class="font-weight-bold d-flex align-center">
     <v-icon icon="mdi-puzzle-outline" class="mr-2" size="large"></v-icon>
     Projeto TEA

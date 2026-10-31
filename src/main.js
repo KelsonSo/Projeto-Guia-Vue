@@ -18,6 +18,9 @@ const customTheme = {
     accent: '#7B1FA2',
     background: '#F4F6F9',
     surface: '#FFFFFF',
+    prime: '#264082',
+    secon: '#febc16',
+    auxi: '#c83600'
   }
 }
 
