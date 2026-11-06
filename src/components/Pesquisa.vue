@@ -56,7 +56,7 @@
 
             <!-- Janela Interna (Sub-window Alunos) -->
             <v-window v-model="alunosSubTab">
-              <!-- Pesquisa Alunos TEA -->
+              <!-- Pesquisa Alunos -->
               <v-window-item value="pesquisa">
                 <v-card class="rounded-xl overflow-hidden" elevation="3">
                   <v-carousel
