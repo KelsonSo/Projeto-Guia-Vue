@@ -3,29 +3,34 @@
     <v-row align="center">
       <v-col cols="12">
         
-        <!-- BARRA SUPERIOR: Seleção do Tipo de Pesquisa (Main Tab) -->
-        <div class="d-flex align-center justify-space-between mb-6">
-          <h2 class="text-h4 font-weight-bold">Pesquisa e Resultados</h2>
-          
-          <v-btn-toggle
-            v-model="mainTab"
-            color="prime"
-            mandatory
-            rounded="xl"
-            elevation="1"
-          >
-          <v-btn value="alunos" prepend-icon="mdi-account-group">
-              Alunos
-            </v-btn>
-            <v-btn value="alunos-tea" prepend-icon="mdi-account-group">
-              Alunos TEA
-            </v-btn>
-            <v-btn value="aee" prepend-icon="mdi-school">
-              AEE
-            </v-btn>
-          </v-btn-toggle>
-        </div>
-
+          <!-- BARRA SUPERIOR: Seleção do Tipo de Pesquisa (Main Tab) -->
+          <div class="d-flex align-center justify-space-between mb-6">
+            <v-row>
+              <v-col>
+                <h2 class="text-h4 font-weight-bold">Pesquisa e Resultados</h2>
+              </v-col>
+              <v-col>
+                <v-btn-toggle
+                v-model="mainTab"
+                color="prime"
+                mandatory
+                rounded="xl"
+                elevation="1"
+                >
+                  <v-btn value="alunos" prepend-icon="mdi-account-group">
+                      Alunos
+                  </v-btn>
+                  <v-btn value="alunos-tea" prepend-icon="mdi-account-group">
+                      Alunos TEA
+                  </v-btn>
+                  <v-btn value="aee" prepend-icon="mdi-school">
+                      AEE
+                  </v-btn>
+                </v-btn-toggle>
+              </v-col>
+           </v-row>
+          </div>
+       
         <!-- JANELA PRINCIPAL -->
         <v-window v-model="mainTab">
            <!-- ==================== TAB: ALUNOS ==================== -->

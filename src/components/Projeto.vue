@@ -19,7 +19,7 @@
               v-for="(img, index) in images"
               :key="index"
               :src="img.src"
-              cover
+              contain
             >
               <!-- Overlay com título e descrição da imagem -->
               <div class="d-flex align-end fill-height pa-4 text-white">
