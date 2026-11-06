@@ -9,7 +9,7 @@
           
           <v-btn-toggle
             v-model="mainTab"
-            color="primary"
+            color="prime"
             mandatory
             rounded="xl"
             elevation="1"
@@ -35,7 +35,7 @@
             <div class="d-flex justify-center mb-4">
               <v-btn-toggle
                 v-model="alunosSubTab"
-                color="secondary"
+                color="secon"
                 mandatory
                 rounded="lg"
                 density="compact"
@@ -64,7 +64,7 @@
                     color="primary"
                   >
                     <v-carousel-item
-                      v-for="(img, index) in imagesTea"
+                      v-for="(img, index) in imagesAlunos"
                       :key="index"
                       :src="img.src"
                       contain
@@ -98,7 +98,7 @@
             <div class="d-flex justify-center mb-4">
               <v-btn-toggle
                 v-model="alunosTeaSubTab"
-                color="secondary"
+                color="secon"
                 mandatory
                 rounded="lg"
                 density="compact"
@@ -144,7 +144,7 @@
               <v-window-item value="resultado">
                 <v-card class="rounded-xl overflow-hidden" elevation="3">
                   <v-img
-                    :src="resultadoAlunosImg"
+                    :src="resultadoTeaImg"
                     height="540"
                     contain
                     class="align-end text-white"
@@ -162,7 +162,7 @@
             <div class="d-flex justify-center mb-4">
               <v-btn-toggle
                 v-model="aeeSubTab"
-                color="secondary"
+                color="secon"
                 mandatory
                 rounded="lg"
                 density="compact"
@@ -240,7 +240,7 @@ const currentSlideAee = ref(0)
 
 // Helper para caminhos dinâmicos no Vite
 function getImageUrl(name) {
-  return new URL(`../assets/pesquisa-pasta/${name}`, import.meta.url).href
+  return new URL(`../assets/pesquisa-pasta-3/${name}`, import.meta.url).href
 }
 function getImageUrl2(name) {
   return new URL(`../assets/pesquisa-pasta/${name}`, import.meta.url).href
@@ -250,23 +250,25 @@ function getImageUrl3(name) {
 }
 
 // Imagens de Resultados
+const resultadoAlunosImg = getImageUrl('alunos-resultado.jpg')
 const resultadoTeaImg = getImageUrl2('pesquisa-resultado.jpg')
 const resultadoAeeImg = getImageUrl3('AEE-resultado.jpg') // Substitua pela imagem do AEE quando tiver
 
 
 // 2. Lista de Imagens - Alunos TEA
 const imagesAlunos = ref([
-  { src: getImageUrl('pesquisa-1.jpg'), title: 'Página 1' },
-  { src: getImageUrl('pesquisa-2.jpg'), title: 'Página 2' },
-  { src: getImageUrl('pesquisa-3.jpg'), title: 'Página 3' },
-  { src: getImageUrl('pesquisa-4.jpg'), title: 'Página 4' },
-  { src: getImageUrl('pesquisa-5.jpg'), title: 'Página 5' },
-  { src: getImageUrl('pesquisa-6.jpg'), title: 'Página 6' },
-  { src: getImageUrl('pesquisa-7.jpg'), title: 'Página 7' },
-  { src: getImageUrl('pesquisa-8.jpg'), title: 'Página 8' },
-  { src: getImageUrl('pesquisa-9.jpg'), title: 'Página 9' },
-  { src: getImageUrl('pesquisa-10.jpg'), title: 'Página 10' },
-  { src: getImageUrl('pesquisa-11.jpg'), title: 'Página 11' }
+  { src: getImageUrl('alunos-1.jpg'), title: 'Página 1' },
+  { src: getImageUrl('alunos-2.jpg'), title: 'Página 1' },
+  { src: getImageUrl('alunos-3.jpg'), title: 'Página 1' },
+  { src: getImageUrl('alunos-4.jpg'), title: 'Página 1' },
+  { src: getImageUrl('alunos-5.jpg'), title: 'Página 1' },
+  { src: getImageUrl('alunos-6.jpg'), title: 'Página 1' },
+  { src: getImageUrl('alunos-7.jpg'), title: 'Página 1' },
+  { src: getImageUrl('alunos-8.jpg'), title: 'Página 1' },
+  { src: getImageUrl('alunos-9.jpg'), title: 'Página 1' },
+  { src: getImageUrl('alunos-10.jpg'), title: 'Página 1' },
+  { src: getImageUrl('alunos-11.jpg'), title: 'Página 1' },
+ 
 ])
 // 2. Lista de Imagens - Alunos TEA
 const imagesTea = ref([

@@ -13,7 +13,7 @@
           <div v-if="!finished">
             <v-progress-linear 
               :model-value="((currentIndex + 1) / questions.length) * 100" 
-              color="primary" 
+              color="secon" 
               height="8" 
               rounded 
               class="mb-6"
@@ -35,7 +35,7 @@
 
             <div class="d-flex justify-end mt-4">
               <v-btn 
-                color="primary" 
+                color="prime" 
                 :disabled="selectedAnswer === null" 
                 @click="nextQuestion"
               >
@@ -51,7 +51,7 @@
             <p class="text-h6 mb-6">
               Você acertou {{ score }} de {{ questions.length }} perguntas.
             </p>
-            <v-btn color="primary" size="large" @click="resetQuiz">
+            <v-btn color="prime" size="large" @click="resetQuiz">
               Tentar Novamente
             </v-btn>
           </div>
