@@ -1,5 +1,5 @@
 <template>
-<v-footer class="bg-grey-darken-4 text-center d-flex flex-column pa-6">
+<v-footer class="bg-prime text-center d-flex flex-column pa-6">
   <div>
     <v-btn icon="mdi-heart" variant="text" color="red"></v-btn>
     <v-btn icon="mdi-github" variant="text" href="https://github.com/KelsonSo/ProjetoTea" target="_blank"></v-btn>
