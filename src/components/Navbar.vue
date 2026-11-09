@@ -1,8 +1,7 @@
 <template>
 <v-app-bar color="prime" elevation="2" class="px-md-4">
   <v-app-bar-title class="font-weight-bold d-flex align-center">
-    <v-icon icon="mdi-puzzle-outline" class="mr-2" size="large"></v-icon>
-    Projeto TEA
+    <v-icon icon="mdi-ribbon" class="mr-2 neurodiversity-gradient" size="large"></v-icon>
   </v-app-bar-title>
 
   <v-spacer></v-spacer>
@@ -17,10 +16,7 @@
     
   </div>
 
-  <!-- Toggle de Tema -->
-  <v-btn icon @click="toggleTheme" class="ml-2">
-    <v-icon>{{ theme.global.name.value === 'dark' ? 'mdi-weather-sunny' : 'mdi-weather-night' }}</v-icon>
-  </v-btn>
+
 
   <!-- Botão Menu Mobile -->
   <v-app-bar-nav-icon class="d-md-none" @click="drawer = !drawer"></v-app-bar-nav-icon>
@@ -47,12 +43,18 @@ const emit = defineEmits(['navigate'])
 const drawer = ref(false)
 const theme = useTheme()
 
-function toggleTheme() {
-theme.global.name.value = theme.global.current.value.dark ? 'customTheme' : 'dark'
-}
 
 function navigateMobile(id) {
 drawer.value = false
 emit('navigate', id)
 }
 </script>
+
+<style scoped>
+.neurodiversity-gradient {
+  background: linear-gradient(45deg, #f44336, #ffeb3b, #4caf50, #2196f3, #9c27b0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+</style>

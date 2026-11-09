@@ -63,8 +63,16 @@
         </v-card>
       </v-col>
 
-      <!-- Coluna Lateral Informativa -->
-      
+      <!-- Coluna Lateral imagem -->
+      <v-col cols="hiden" md="3">
+        <v-img
+        :aspect-ratio="1"
+        class="elevation-3"
+        src="../assets/imagens/imagem1.png"
+        width="300"
+        cover
+      ></v-img>
+      </v-col>
     </v-row>
   </v-container>
 </template>
