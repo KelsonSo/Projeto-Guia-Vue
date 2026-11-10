@@ -60,13 +60,14 @@
               <v-window-item value="pesquisa">
                 <v-card class="rounded-xl overflow-hidden" elevation="3">
                   <v-carousel
-                    v-model="currentSlideTea"
+                    v-model="currentSlideAlunos"
                     height="540"
                     show-arrows="hover"
                     cycle
                     interval="5000"
                     hide-delimiter-background
                     color="primary"
+                    hide-delimiters
                   >
                     <v-carousel-item
                       v-for="(img, index) in imagesAlunos"
@@ -79,10 +80,36 @@
                       </div>
                     </v-carousel-item>
                   </v-carousel>
+
+                  <!-- Barra de navegação inferior - Alunos -->
+                  <v-card-actions class="pa-4 bg-surface d-flex justify-space-between align-center">
+                   
+                    <div>
+                      <v-btn
+                        variant="tonal"
+                        color="prime"
+                        size="small"
+                        prepend-icon="mdi-chevron-left"
+                        class="mr-2"
+                        @click="currentSlideAlunos = (currentSlideAlunos - 1 + imagesAlunos.length) % imagesAlunos.length"
+                      >
+                        Anterior
+                      </v-btn>
+                      <v-btn
+                        variant="flat"
+                        color="prime"
+                        size="small"
+                        append-icon="mdi-chevron-right"
+                        @click="currentSlideAlunos = (currentSlideAlunos + 1) % imagesAlunos.length"
+                      >
+                        Próxima
+                      </v-btn>
+                    </div>
+                  </v-card-actions>
                 </v-card>
               </v-window-item>
 
-              <!-- Resultado Alunos TEA -->
+              <!-- Resultado Alunos -->
               <v-window-item value="resultado">
                 <v-card class="rounded-xl overflow-hidden" elevation="3">
                   <v-img
@@ -117,7 +144,7 @@
               </v-btn-toggle>
             </div>
 
-            <!-- Janela Interna (Sub-window Alunos) -->
+            <!-- Janela Interna (Sub-window Alunos TEA) -->
             <v-window v-model="alunosTeaSubTab">
               <!-- Pesquisa Alunos TEA -->
               <v-window-item value="pesquisa">
@@ -130,6 +157,7 @@
                     interval="5000"
                     hide-delimiter-background
                     color="primary"
+                    hide-delimiters
                   >
                     <v-carousel-item
                       v-for="(img, index) in imagesTea"
@@ -142,6 +170,32 @@
                       </div>
                     </v-carousel-item>
                   </v-carousel>
+
+                  <!-- Barra de navegação inferior - Alunos TEA -->
+                  <v-card-actions class="pa-4 bg-surface d-flex justify-space-between align-center">
+                  
+                    <div>
+                      <v-btn
+                        variant="tonal"
+                        color="prime"
+                        size="small"
+                        prepend-icon="mdi-chevron-left"
+                        class="mr-2"
+                        @click="currentSlideTea = (currentSlideTea - 1 + imagesTea.length) % imagesTea.length"
+                      >
+                        Anterior
+                      </v-btn>
+                      <v-btn
+                        variant="flat"
+                        color="prime"
+                        size="small"
+                        append-icon="mdi-chevron-right"
+                        @click="currentSlideTea = (currentSlideTea + 1) % imagesTea.length"
+                      >
+                        Próxima
+                      </v-btn>
+                    </div>
+                  </v-card-actions>
                 </v-card>
               </v-window-item>
 
@@ -194,6 +248,7 @@
                     interval="5000"
                     hide-delimiter-background
                     color="primary"
+                    hide-delimiters
                   >
                     <v-carousel-item
                       v-for="(img, index) in imagesAee"
@@ -206,6 +261,34 @@
                       </div>
                     </v-carousel-item>
                   </v-carousel>
+
+                  <!-- Barra de navegação inferior - AEE -->
+                  <v-card-actions class="pa-4 bg-surface d-flex justify-space-between align-center">
+                   
+
+                    <div>
+                      <v-btn
+                        variant="tonal"
+                        color="prime"
+                        size="small"
+                        prepend-icon="mdi-chevron-left"
+                        class="mr-2"
+                        @click="currentSlideAee = (currentSlideAee - 1 + imagesAee.length) % imagesAee.length"
+                      >
+                        Anterior
+                      </v-btn>
+                      
+                      <v-btn
+                        variant="flat"
+                        color="prime"
+                        size="small"
+                        append-icon="mdi-chevron-right"
+                        @click="currentSlideAee = (currentSlideAee + 1) % imagesAee.length"
+                      >
+                        Próxima
+                      </v-btn>
+                    </div>
+                  </v-card-actions>
                 </v-card>
               </v-window-item>
 
@@ -239,8 +322,8 @@ const alunosSubTab = ref('pesquisa')
 const alunosTeaSubTab = ref('pesquisa')
 const aeeSubTab = ref('pesquisa')
 
-const currentSlideTea = ref(0)
 const currentSlideAlunos = ref(0)
+const currentSlideTea = ref(0)
 const currentSlideAee = ref(0)
 
 // Helper para caminhos dinâmicos no Vite
@@ -257,24 +340,23 @@ function getImageUrl3(name) {
 // Imagens de Resultados
 const resultadoAlunosImg = getImageUrl('alunos-resultado.jpg')
 const resultadoTeaImg = getImageUrl2('pesquisa-resultado.jpg')
-const resultadoAeeImg = getImageUrl3('AEE-resultado.jpg') // Substitua pela imagem do AEE quando tiver
+const resultadoAeeImg = getImageUrl3('AEE-resultado.jpg')
 
-
-// 2. Lista de Imagens - Alunos TEA
+// 2. Lista de Imagens - Alunos
 const imagesAlunos = ref([
   { src: getImageUrl('alunos-1.jpg'), title: 'Página 1' },
-  { src: getImageUrl('alunos-2.jpg'), title: 'Página 1' },
-  { src: getImageUrl('alunos-3.jpg'), title: 'Página 1' },
-  { src: getImageUrl('alunos-4.jpg'), title: 'Página 1' },
-  { src: getImageUrl('alunos-5.jpg'), title: 'Página 1' },
-  { src: getImageUrl('alunos-6.jpg'), title: 'Página 1' },
-  { src: getImageUrl('alunos-7.jpg'), title: 'Página 1' },
-  { src: getImageUrl('alunos-8.jpg'), title: 'Página 1' },
-  { src: getImageUrl('alunos-9.jpg'), title: 'Página 1' },
-  { src: getImageUrl('alunos-10.jpg'), title: 'Página 1' },
-  { src: getImageUrl('alunos-11.jpg'), title: 'Página 1' },
- 
+  { src: getImageUrl('alunos-2.jpg'), title: 'Página 2' },
+  { src: getImageUrl('alunos-3.jpg'), title: 'Página 3' },
+  { src: getImageUrl('alunos-4.jpg'), title: 'Página 4' },
+  { src: getImageUrl('alunos-5.jpg'), title: 'Página 5' },
+  { src: getImageUrl('alunos-6.jpg'), title: 'Página 6' },
+  { src: getImageUrl('alunos-7.jpg'), title: 'Página 7' },
+  { src: getImageUrl('alunos-8.jpg'), title: 'Página 8' },
+  { src: getImageUrl('alunos-9.jpg'), title: 'Página 9' },
+  { src: getImageUrl('alunos-10.jpg'), title: 'Página 10' },
+  { src: getImageUrl('alunos-11.jpg'), title: 'Página 11' },
 ])
+
 // 2. Lista de Imagens - Alunos TEA
 const imagesTea = ref([
   { src: getImageUrl2('pesquisa-1.jpg'), title: 'Página 1' },
@@ -290,19 +372,19 @@ const imagesTea = ref([
   { src: getImageUrl2('pesquisa-11.jpg'), title: 'Página 11' }
 ])
 
-// 3. Lista de Imagens - AEE (Estruturada para quando colocar as imagens do AEE)
+// 3. Lista de Imagens - AEE
 const imagesAee = ref([
-  { src: getImageUrl3('AEE-1.jpg'), title: 'AEE - Página 1' },
-  { src: getImageUrl3('AEE-2.jpg'), title: 'AEE - Página 2' },
-  { src: getImageUrl3('AEE-3.jpg'), title: 'AEE - Página 1' },
-  { src: getImageUrl3('AEE-4.jpg'), title: 'AEE - Página 1' },
-  { src: getImageUrl3('AEE-5.jpg'), title: 'AEE - Página 1' },
-  { src: getImageUrl3('AEE-6.jpg'), title: 'AEE - Página 1' },
-  { src: getImageUrl3('AEE-7.jpg'), title: 'AEE - Página 1' },
-  { src: getImageUrl3('AEE-8.jpg'), title: 'AEE - Página 1' },
-  { src: getImageUrl3('AEE-9.jpg'), title: 'AEE - Página 1' },
-  { src: getImageUrl3('AEE-10.jpg'), title: 'AEE - Página 1' },
-  { src: getImageUrl3('AEE-11.jpg'), title: 'AEE - Página 1' }
+  { src: getImageUrl3('AEE-1.jpg'), title: 'Página 1' },
+  { src: getImageUrl3('AEE-2.jpg'), title: 'Página 2' },
+  { src: getImageUrl3('AEE-3.jpg'), title: 'Página 3' },
+  { src: getImageUrl3('AEE-4.jpg'), title: 'Página 4' },
+  { src: getImageUrl3('AEE-5.jpg'), title: 'Página 5' },
+  { src: getImageUrl3('AEE-6.jpg'), title: 'Página 6' },
+  { src: getImageUrl3('AEE-7.jpg'), title: 'Página 7' },
+  { src: getImageUrl3('AEE-8.jpg'), title: 'Página 8' },
+  { src: getImageUrl3('AEE-9.jpg'), title: 'Página 9' },
+  { src: getImageUrl3('AEE-10.jpg'), title: 'Página 10' },
+  { src: getImageUrl3('AEE-11.jpg'), title: 'Página 11' }
 ])
 </script>
 

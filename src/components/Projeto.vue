@@ -14,6 +14,7 @@
             interval="5000"
             hide-delimiter-background
             color="primary"
+            hide-delimiters
           >
             <v-carousel-item
               v-for="(img, index) in images"
