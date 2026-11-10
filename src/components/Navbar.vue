@@ -28,10 +28,10 @@
   <v-list nav>
     <v-list-item prepend-icon="mdi-home" title="Início" @click="navigateMobile('inicio')"></v-list-item>
     <v-list-item prepend-icon="mdi-book-open-page-variant" title="Projeto" @click="navigateMobile('projeto')"></v-list-item>
-    <v-list-item prepend-icon="mdi-email" title="Projeto" @click="navigateMobile('pesquisa')"></v-list-item>
+    <v-list-item prepend-icon="mdi-file-document-check" title="Pesquisa" @click="navigateMobile('pesquisa')"></v-list-item>
     <v-list-item prepend-icon="mdi-help-circle" title="Quiz" @click="navigateMobile('quiz')"></v-list-item>
-    <v-list-item prepend-icon="mdi-help-circle" title="Quiz" @click="navigateMobile('imagens')"></v-list-item>
-    <v-list-item prepend-icon="mdi-help-circle" title="Infor" @click="navigateMobile('infor')"></v-list-item>
+    <v-list-item prepend-icon="mdi-image" title="Imagens" @click="navigateMobile('imagens')"></v-list-item>
+    <v-list-item prepend-icon="mdi-information" title="Informações" @click="navigateMobile('infor')"></v-list-item>
     
   </v-list>
 </v-navigation-drawer>
