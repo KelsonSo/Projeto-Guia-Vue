@@ -64,14 +64,13 @@
       </v-col>
 
       <!-- Coluna Lateral imagem -->
-      <v-col cols="hiden" md="3">
+      <v-col cols="hiden" md="3" class="d-none d-md-flex">
         <v-img
-        :aspect-ratio="1"
-        class="elevation-3"
-        src="../assets/imagens/imagem1.png"
-        width="300"
-        cover
-      ></v-img>
+        height="400"
+        image-class="transition-400 hover:scale-90 elevation-2"
+        rounded="pill"
+        :src="imagemLateral"
+        ></v-img>
       </v-col>
     </v-row>
   </v-container>
@@ -86,7 +85,11 @@ const currentSlide = ref(0)
 function getImageUrl(name) {
   return new URL(`../assets/slides/${name}`, import.meta.url).href
 }
+function getImageUrl2(name) {
+  return new URL(`../assets/imagens/${name}`, import.meta.url).href
+}
 
+const imagemLateral = getImageUrl2("imagem1.png")
 const images = ref([
   { 
     src: getImageUrl('1.jpg'), 
@@ -132,6 +135,11 @@ const images = ref([
     src: getImageUrl('9.jpg'), 
     title: 'Página 9', 
     description: 'Referência' 
-  }
+  },
+
 ])
 </script>
+
+<style>
+
+</style>

@@ -8,6 +8,7 @@
     <Pesquisa id="pesquisa" />
     <QuizSection id="quiz" />
     <InforSection id="infor" />
+    <ImagensSection id="imagens" />
     
   </v-main>
 
@@ -23,6 +24,7 @@ import Pesquisa from './components/Pesquisa.vue'
 import Projeto from './components/Projeto.vue'
 import QuizSection from './components/QuizSection.vue'
 import AppFooter from './components/AppFooter.vue'
+import ImagensSection from './components/ImagensSection.vue'
 
 function scrollTo(elementId) {
 const el = document.getElementById(elementId)

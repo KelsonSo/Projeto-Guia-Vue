@@ -12,6 +12,7 @@
     <v-btn variant="text" @click="$emit('navigate', 'projeto')">Projeto</v-btn>
     <v-btn variant="text" @click="$emit('navigate', 'pesquisa')">Pesquisa</v-btn>
     <v-btn variant="text" @click="$emit('navigate', 'quiz')">Quiz</v-btn>
+    <v-btn variant="text" @click="$emit('navigate', 'imagens')">Imagens</v-btn>
     <v-btn variant="text" @click="$emit('navigate', 'infor')">Informações</v-btn>
     
   </div>
@@ -27,8 +28,9 @@
   <v-list nav>
     <v-list-item prepend-icon="mdi-home" title="Início" @click="navigateMobile('inicio')"></v-list-item>
     <v-list-item prepend-icon="mdi-book-open-page-variant" title="Projeto" @click="navigateMobile('projeto')"></v-list-item>
-    <v-list-item prepend-icon="mdi-email" title="Projeto" @click="navigateMobile('projeto')"></v-list-item>
+    <v-list-item prepend-icon="mdi-email" title="Projeto" @click="navigateMobile('pesquisa')"></v-list-item>
     <v-list-item prepend-icon="mdi-help-circle" title="Quiz" @click="navigateMobile('quiz')"></v-list-item>
+    <v-list-item prepend-icon="mdi-help-circle" title="Quiz" @click="navigateMobile('imagens')"></v-list-item>
     <v-list-item prepend-icon="mdi-help-circle" title="Infor" @click="navigateMobile('infor')"></v-list-item>
     
   </v-list>

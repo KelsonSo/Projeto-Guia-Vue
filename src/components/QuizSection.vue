@@ -2,7 +2,17 @@
 <v-sheet color="grey-lighten-4" class="py-12">
   <v-container>
     <v-row justify="center">
-      <v-col cols="12" md="8">
+      <v-col cols="hiden" md="3" class="d-none d-md-flex">
+        <v-img
+        height="400"
+        image-class="transition-400 hover:scale-90 elevation-2"
+        rounded="pill"
+        :src="imagemLateral"
+        >
+
+        </v-img>
+      </v-col>
+      <v-col cols="12" md="9">
         <v-card class="pa-6 rounded-xl" elevation="3">
           <h2 class="text-h4 font-weight-bold text-center primary--text mb-2">Quiz de Conscientização</h2>
           <p class="text-subtitle-1 text-center text-medium-emphasis mb-6">
@@ -109,4 +119,9 @@ score.value = 0
 selectedAnswer.value = null
 finished.value = false
 }
+
+function getImageUrl(name) {
+  return new URL(`../assets/imagens/${name}`, import.meta.url).href
+}
+const imagemLateral = getImageUrl("imagem2.png")
 </script>
