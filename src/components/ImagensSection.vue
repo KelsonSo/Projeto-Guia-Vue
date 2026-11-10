@@ -1,109 +1,68 @@
 <template>
-    <v-container class="py-12">
-      <v-row align="center">
-        <!-- Coluna Principal com o Carrossel do Projeto -->
-        <v-col md="1">
+  <v-container class="py-12">
+    <v-row align="center">
+      <!-- Coluna Principal com o Carrossel do Projeto -->
+      <v-col md="1"></v-col>
+      <v-col cols="12" md="10">
+        <h2 class="text-h4 font-weight-bold mb-4">Imagens da Produção</h2>
 
-        </v-col>
-        <v-col cols="12" md="10">
-          <h2 class="text-h4 font-weight-bold mb-4">Imagens da Produção</h2>
-  
-          <v-card class="rounded-xl overflow-hidden" elevation="3">
-            <v-carousel
-              v-model="currentSlide"
-              height="450"
-              show-arrows="hover"
-              cycle
-              interval="5000"
-              hide-delimiter-background
-              color="primary"
+        <v-card class="rounded-xl overflow-hidden" elevation="3">
+          <v-carousel
+            v-model="currentSlide"
+            height="450"
+            show-arrows="hover"
+            cycle
+            interval="5000"
+            hide-delimiter-background
+            color="prime"
+            hide-delimiters
+          >
+            <v-carousel-item
+              v-for="(img, index) in images"
+              :key="index"
+              :src="img.src"
+              contain
+              
             >
-              <v-carousel-item
-                v-for="(img, index) in images"
-                :key="index"
-                :src="img.src"
-                contain
-              >
-                <!-- Overlay com título e descrição da imagem -->
-                <div class="d-flex align-end fill-height pa-4 text-white">
-                  <div>
-                    <div class="text-subtitle-2 text-auxi">{{ img.description }}</div>
-                  </div>
-                </div>
-              </v-carousel-item>
-            </v-carousel>
-  
-            <!-- Barra de navegação inferior -->
-            <v-card-actions class="pa-4 bg-surface d-flex justify-space-between align-center">
-              <span class="text-caption text-medium-emphasis">
-                Imagem {{ currentSlide + 1 }} de {{ images.length }}
-              </span>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-        <v-col md="1">
+              <!-- Opcional: Mostrar a descrição se quiser -->
+              
+            </v-carousel-item>
+          </v-carousel>
 
-        </v-col>
-  
-      </v-row>
-    </v-container>
-  </template>
-  
-  <script setup>
-  import { ref } from 'vue'
-  
-  const currentSlide = ref(0)
-  
-  // Função auxiliar para carregar imagens da pasta assets dinamicamente no Vite
-  function getImageUrl(name) {
-    return new URL(`../assets/slides/${name}`, import.meta.url).href
-  }
-  function getImageUrl2(name) {
-    return new URL(`../assets/imagens/${name}`, import.meta.url).href
-  }
-  
-  const imagemLateral = getImageUrl2("imagem1.png")
-  const images = ref([
-    { 
-      src: getImageUrl('1.jpg'), 
-      description: 'Capa' 
-    },
-    { 
-      src: getImageUrl('2.jpg'), 
-      description: 'Problema Mobilizador' 
-    },
-    { 
-      src: getImageUrl('3.jpg'), 
-      description: 'Fundamentação Teórica' 
-    },
-    { 
-      src: getImageUrl('4.jpg'), 
-      description: 'Justificativa' 
-    },
-    { 
-      src: getImageUrl('5.jpg'), 
-      description: 'Objetivos' 
-    },
-    { 
-      src: getImageUrl('6.jpg'), 
-      description: 'Apoio à Família' 
-    },
-    { 
-      src: getImageUrl('7.jpg'),  
-      description: 'Resultados' 
-    },
-    { 
-      src: getImageUrl('8.jpg'),  
-      description: 'Produto Final' 
-    },
-    { 
-      src: getImageUrl('9.jpg'), 
-      description: 'Referência' 
+          <!-- Barra de navegação inferior -->
+          <v-card-actions class="pa-4 bg-surface d-flex justify-space-between align-center">
+            <span class="text-caption text-medium-emphasis">
+              Imagem {{ currentSlide + 1 }} de {{ images.length }}
+            </span>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+      <v-col md="1"></v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const currentSlide = ref(0)
+
+// Função auxiliar para carregar imagens da pasta assets dinamicamente no Vite
+function getImageUrl(name) {
+  return new URL(`../assets/fotos/${name}`, import.meta.url).href
+}
+
+
+// Geração automática de 1 a 30 para o array de imagens
+const images = ref(
+  Array.from({ length: 30 }, (_, index) => {
+    const num = index + 1
+    return {
+      src: getImageUrl(`${num}.jpeg`), // Altere para .jpeg ou .png se necessário
     }
-  ])
-  </script>
-  
-  <style>
-  
-  </style>
-  
+  })
+)
+</script>
+
+<style>
+</style>
