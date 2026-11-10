@@ -32,8 +32,32 @@
           <!-- Barra de navegação inferior -->
           <v-card-actions class="pa-4 bg-surface d-flex justify-space-between align-center">
             <span class="text-caption text-medium-emphasis">
-              Imagem {{ currentSlide + 1 }} de {{ images.length }}
+              {{ currentSlide + 1 }} de {{ images.length }}
             </span>
+            <v-card-actions class="pa-4 bg-surface d-flex justify-space-between align-center">
+            <div>
+              <v-btn
+                variant="tonal"
+                color="prime"
+                size="small"
+                prepend-icon="mdi-chevron-left"
+                class="mr-2"
+                @click="currentSlide = (currentSlide - 1 + images.length) % images.length"
+              >
+                Anterior
+              </v-btn>
+              
+              <v-btn
+                variant="flat"
+                color="prime"
+                size="small"
+                append-icon="mdi-chevron-right"
+                @click="currentSlide = (currentSlide + 1) % images.length"
+              >
+                Próxima
+              </v-btn>
+            </div>
+          </v-card-actions>
           </v-card-actions>
         </v-card>
       </v-col>
@@ -55,7 +79,7 @@ function getImageUrl(name) {
 
 // Geração automática de 1 a 30 para o array de imagens
 const images = ref(
-  Array.from({ length: 30 }, (_, index) => {
+  Array.from({ length: 32 }, (_, index) => {
     const num = index + 1
     return {
       src: getImageUrl(`${num}.jpeg`), // Altere para .jpeg ou .png se necessário
